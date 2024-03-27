@@ -21,9 +21,6 @@ const ProfLayout = () => {
                         <NavLink to="Prendre-absenses" className="a-link" > Prendre Les Absences </NavLink>
                     </li>
                     <li className='nav-item' >
-                        <NavLink to="modules" className="a-link"> Justification Des Absences </NavLink>
-                    </li>
-                    <li className='nav-item' >
                         <NavLink to="Historique-Absneses" className="a-link" > Historique Des Absenses </NavLink>
                     </li>
                 </ul>

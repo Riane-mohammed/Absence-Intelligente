@@ -27,6 +27,9 @@ const AdminLayout = () => {
                         <NavLink to="emploie-temps" className="a-link" > Emplois de Temps </NavLink>
                     </li>
                     <li className='nav-item' >
+                        <NavLink to="Justif-absenses" className="a-link"> Justification Des Absences </NavLink>
+                    </li>
+                    <li className='nav-item' >
                         <NavLink to="absenses" className="a-link" > Absenses </NavLink>
                     </li>
                 </ul>

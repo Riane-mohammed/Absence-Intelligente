@@ -1,4 +1,6 @@
 import {createBrowserRouter, createRoutesFromElements,Route, RouterProvider} from 'react-router-dom'
+import { Provider } from 'react-redux';
+import store from './store/store';
 
 //includs: 
 import ErrorPage from './pages/errorPage';
@@ -17,11 +19,11 @@ import ProfLayout from './pages/layouts/profLayout';
 import ProfDashboard from './pages/prof/profDashboard';
 import ProfStudentsPage from './pages/prof/profStudents';
 import TakeAbsencesPage from './pages/prof/takeAbsences';
-import ProfModulesPage from './pages/prof/profModules';
+import JustifAbsenses from './pages/prof/JustifAbsenses';
 import Historique from './pages/prof/historique';
 
 
-let id = 1;
+let id = 0;
 
 const AdminRoutes = (
   <Route path='/' element={<AdminLayout />}>
@@ -30,6 +32,7 @@ const AdminRoutes = (
     <Route path='professeurs' element={<ProfsPage />} loader={ProfsLoader} />
     <Route path='modules' element={<ModulesPage />} />
     <Route path='emploie-temps' element={<EmploisPage />} />
+    <Route path="Justif-absenses" element={<JustifAbsenses />} />
     <Route path='absenses' element={<AbsencesPage />} />
     <Route path="*" element={<ErrorPage />} />
   </Route>
@@ -40,7 +43,6 @@ const ProfRoutes = (
     <Route index element={<ProfDashboard />} />
     <Route path="etudiants" element={<ProfStudentsPage />} />
     <Route path="Prendre-absenses" element={<TakeAbsencesPage />} />
-    <Route path="modules" element={<ProfModulesPage />} />
     <Route path="Historique-Absneses" element={<Historique />} />
     <Route path="*" element={<ErrorPage />} />
   </Route>
@@ -55,7 +57,9 @@ const router = createBrowserRouter(
 
 function App() {
   return (
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   );
 }
 
