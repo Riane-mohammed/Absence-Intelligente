@@ -1,87 +1,87 @@
 {
-"users": [
-{
-    "id": 1,
-    "role": "admin",
-    "name": "Admin User",
-    "email": "admin@example.com",
-    "password": "admin123"
-},
-{
-    "id": 2,
-    "role": "professor",
-    "name": "Professor Smith",
-    "email": "smith@example.com",
-    "password": "smith123",
-    "department": "Informatics"
-},
-{
-    "id": 3,
-    "role": "professor",
-    "name": "Professor Johnson",
-    "email": "johnson@example.com",
-    "password": "johnson123",
-    "department": "Industrial"
-},
-{
-    "id": 4,
-    "role": "student",
-    "name": "Student Adams",
-    "email": "adams@example.com",
-    "password": "adams123",
-    "class": "A"
-},
-{
-    "id": 5,
-    "role": "student",
-    "name": "Student Brown",
-    "email": "brown@example.com",
-    "password": "brown123",
-    "class": "B"
-},
-{
-    "id": 6,
-    "role": "student",
-    "name": "Student Clark",
-    "email": "clark@example.com",
-    "password": "clark123",
-    "class": "A"
-}
-],
-"courses": [
-{
-    "id": 1,
-    "name": "Mathematics",
-    "professorId": 2
-},
-{
-    "id": 2,
-    "name": "Physics",
-    "professorId": 3
-}
-],
-"absences": [
-{
-    "id": 1,
-    "studentId": 4,
-    "courseId": 1,
-    "date": "2023-04-01",
-    "justified": false
-},
-{
-    "id": 2,
-    "studentId": 5,
-    "courseId": 2,
-    "date": "2023-04-03",
-    "justified": true
-}
-],
-"medicalCertificates": [
-{
-    "id": 1,
-    "studentId": 5,
-    "date": "2023-04-03",
-    "fileUrl": "https://example.com/certificate.pdf"
-}
-]
-}
+    "users": [
+    {
+        "id": 1,
+        "role": "admin",
+        "name": "Admin User",
+        "email": "admin@example.com",
+        "password": "admin123"
+    },
+    {
+        "id": 2,
+        "role": "professor",
+        "name": "Professor Smith",
+        "email": "smith@example.com",
+        "password": "smith123",
+        "department": "Informatics"
+    },
+    {
+        "id": 3,
+        "role": "professor",
+        "name": "Professor Johnson",
+        "email": "johnson@example.com",
+        "password": "johnson123",
+        "department": "Industrial"
+    },
+    {
+        "id": 4,
+        "role": "student",
+        "name": "Student Adams",
+        "email": "adams@example.com",
+        "password": "adams123",
+        "class": "A"
+    },
+    {
+        "id": 5,
+        "role": "student",
+        "name": "Student Brown",
+        "email": "brown@example.com",
+        "password": "brown123",
+        "class": "B"
+    },
+    {
+        "id": 6,
+        "role": "student",
+        "name": "Student Clark",
+        "email": "clark@example.com",
+        "password": "clark123",
+        "class": "A"
+    }
+    ],
+    "courses": [
+    {
+        "id": 1,
+        "name": "Mathematics",
+        "professorId": 2
+    },
+    {
+        "id": 2,
+        "name": "Physics",
+        "professorId": 3
+    }
+    ],
+    "absences": [
+    {
+        "id": 1,
+        "studentId": 4,
+        "courseId": 1,
+        "date": "2023-04-01",
+        "justified": false
+    },
+    {
+        "id": 2,
+        "studentId": 5,
+        "courseId": 2,
+        "date": "2023-04-03",
+        "justified": true
+    }
+    ],
+    "medicalCertificates": [
+    {
+        "id": 1,
+        "studentId": 5,
+        "date": "2023-04-03",
+        "fileUrl": "https://example.com/certificate.pdf"
+    }
+    ]
+    }

@@ -1,8 +1,64 @@
-import { useLoaderData } from "react-router-dom";
+import React from "react";
+import { IoIosArrowDown } from "react-icons/io";
+import { IoIosArrowUp } from "react-icons/io";
+// complete the import here
+// replace here because we have an issue with types here
+import {
+  createColumnHelper,
+  flexRender,
+  getCoreRowModel,
+  useReactTable,
+  getSortedRowModel,
+  getPaginationRowModel,
+} from "@tanstack/react-table";
+
+import "./usersTable.css";
+
+import mockData from "./studentsDb.json";
+import { FaChevronLeft } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa6";
+
+// interface
+const columnHelper = createColumnHelper();
+
+const columns = [
+  columnHelper.accessor("id", {
+    cell: (info) => info.getValue(),
+  }),
+  columnHelper.accessor("name", {
+    cell: (info) => info.getValue(),
+  }),
+  columnHelper.accessor((row) => row.email, {
+    id: "email",
+    cell: (info) => <i>{info.getValue()}</i>,
+    header: () => <span>Email</span>,
+  }),
+  columnHelper.accessor("phone", {
+    header: () => "Phone",
+    cell: (info) => info.renderValue(),
+  }),
+];
 
 export const StudentsPage = () => {
-  const students = useLoaderData();
-  
+  const [data] = React.useState(() => [...mockData]);
+  const [sorting, setSorting] = React.useState([]);
+
+  const table = useReactTable({
+    data,
+    columns,
+    state: {
+      sorting,
+    },
+    initialState: {
+      pagination: {
+        pageSize: 8,
+      },
+    },
+    getCoreRowModel: getCoreRowModel(),
+    onSortingChange: setSorting,
+    getSortedRowModel: getSortedRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+  });
 
   return (
     <div className="students">
@@ -12,7 +68,7 @@ export const StudentsPage = () => {
         </h1>
         <div>
           <form class="flex flex-col justify-center p-4 sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <div class="relative ">
+            <div class="relative w-full sm:w-auto">
               <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg
                   class="w-4 h-4 text-gray-500 dark:text-gray-400"
@@ -45,10 +101,10 @@ export const StudentsPage = () => {
               </button>
             </div>
 
-            <div className="relative">
+            <div class="relative">
               <select
                 id="countries"
-                class="bg-gray-50 p-4 border text-gray-900 text-sm rounded-lg  w-[400px]  border-gray-600 placeholder-gray-400"
+                class="bg-gray-50 p-4 border text-gray-900 text-sm rounded-lg w-full sm:w-80 border-gray-600 placeholder-gray-400"
               >
                 <option selected>Choose a country</option>
                 <option value="US">United States</option>
@@ -58,7 +114,7 @@ export const StudentsPage = () => {
               </select>
             </div>
 
-            <div className="mx-2 end-2.5">
+            <div class="mx-2 end-2.5">
               <button class="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
                 <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
                   Purple to blue
@@ -73,238 +129,107 @@ export const StudentsPage = () => {
           </form>
         </div>
       </div>
-      <div className="p-4">
-
-
-
-<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 border border-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-400">
-            <tr>
-                <th scope="col" class="px-6 py-3">
-                    Product name
+      <table className="table-fixed w-full">
+        <thead className="border-b-2">
+          {table.getHeaderGroups().map((headerGroup) => (
+            <tr
+              key={headerGroup.id}
+              className="border-b text-gray-800 uppercase"
+            >
+              {headerGroup.headers.map((header) => (
+                <th
+                  key={header.id}
+                  className="px-4 pr-2 py-4 font-medium text-left dark:bg-[#121212] dark:text-white"
+                >
+                  {header.isPlaceholder ? null : (
+                    <div
+                      {...{
+                        className: header.column.getCanSort()
+                          ? "cursor-pointer select-none flex min-w-[36px] items-center"
+                          : "",
+                        onClick: header.column.getToggleSortingHandler(),
+                      }}
+                    >
+                      {flexRender(
+                        header.column.columnDef.header,
+                        header.getContext()
+                      )}
+                      {({
+                        asc: (
+                          <span className="pl-2">
+                            <IoIosArrowUp />
+                          </span>
+                        ),
+                        desc: (
+                          <span className="pl-2">
+                            <IoIosArrowDown />
+                          </span>
+                        ),
+                      }[header.column.getIsSorted()] ?? null)}
+                    </div>
+                  )}
                 </th>
-                <th scope="col" class="px-6 py-3">
-                    Color
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Category
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Price
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Action
-                </th>
+              ))}
             </tr>
+          ))}
         </thead>
+
         <tbody>
-            <tr class="bg-white border-b border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    Apple MacBook Pro 17"
-                </th>
-                <td class="px-6 py-4">
-                    Silver
+          {table.getRowModel().rows.map((row) => (
+            <tr key={row.id} className="border-b">
+              {row.getVisibleCells().map((cell) => (
+                <td key={cell.id} className="px-4 pt-[14px] pb-[18px]">
+                  {flexRender(
+                    cell.column.columnDef.cell,
+                    cell.getContext()
+                  )}
                 </td>
-                <td class="px-6 py-4">
-                    Laptop
-                </td>
-                <td class="px-6 py-4">
-                    $2999
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
+              ))}
             </tr>
-            <tr class="bg-white border-b border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    Apple MacBook Pro 17"
-                </th>
-                <td class="px-6 py-4">
-                    Silver
-                </td>
-                <td class="px-6 py-4">
-                    Laptop
-                </td>
-                <td class="px-6 py-4">
-                    $2999
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white border-b border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    Apple MacBook Pro 17"
-                </th>
-                <td class="px-6 py-4">
-                    Silver
-                </td>
-                <td class="px-6 py-4">
-                    Laptop
-                </td>
-                <td class="px-6 py-4">
-                    $2999
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white border-b border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    Apple MacBook Pro 17"
-                </th>
-                <td class="px-6 py-4">
-                    Silver
-                </td>
-                <td class="px-6 py-4">
-                    Laptop
-                </td>
-                <td class="px-6 py-4">
-                    $2999
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white border-b border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    Apple MacBook Pro 17"
-                </th>
-                <td class="px-6 py-4">
-                    Silver
-                </td>
-                <td class="px-6 py-4">
-                    Laptop
-                </td>
-                <td class="px-6 py-4">
-                    $2999
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white border-b border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    Apple MacBook Pro 17"
-                </th>
-                <td class="px-6 py-4">
-                    Silver
-                </td>
-                <td class="px-6 py-4">
-                    Laptop
-                </td>
-                <td class="px-6 py-4">
-                    $2999
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-
-            <tr class="bg-white border-b border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    Apple MacBook Pro 17"
-                </th>
-                <td class="px-6 py-4">
-                    Silver
-                </td>
-                <td class="px-6 py-4">
-                    Laptop
-                </td>
-                <td class="px-6 py-4">
-                    $2999
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white border-b border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    Apple MacBook Pro 17"
-                </th>
-                <td class="px-6 py-4">
-                    Silver
-                </td>
-                <td class="px-6 py-4">
-                    Laptop
-                </td>
-                <td class="px-6 py-4">
-                    $2999
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-            <tr class="bg-white border-b border-gray-700">
-                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                    Apple MacBook Pro 17"
-                </th>
-                <td class="px-6 py-4">
-                    Silver
-                </td>
-                <td class="px-6 py-4">
-                    Laptop
-                </td>
-                <td class="px-6 py-4">
-                    $2999
-                </td>
-                <td class="px-6 py-4">
-                    <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                </td>
-            </tr>
-           
+          ))}
         </tbody>
-    </table>
-</div>
-
-
-
-<nav className="flex justify-end" aria-label="Page navigation example">
-  <ul class="flex items-center -space-x-px h-10 text-base pt-6">
-    <li>
-      <a href="#" class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 ">
-        <span class="sr-only">Previous</span>
-        <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-        </svg>
-      </a>
-    </li>
-    <li>
-      <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">1</a>
-    </li>
-    <li>
-      <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">2</a>
-    </li>
-    <li>
-      <a href="#" aria-current="page" class="z-10 flex items-center justify-center px-4 h-10 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">3</a>
-    </li>
-    <li>
-      <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">4</a>
-    </li>
-    <li>
-      <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">5</a>
-    </li>
-    <li>
-      <a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">
-        <span class="sr-only">Next</span>
-        <svg class="w-3 h-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-        </svg>
-      </a>
-    </li>
-  </ul>
-</nav>
-
-
+      </table>
+      <div className="flex justify-between items-center p-4">
+        <div>
+          <span className="">{data.length} results</span>
+        </div>
+        <div className=" flex justify-center items-center">
+          <button
+            className=""
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+          >
+            <FaChevronLeft className="text-[0.8rem] cursor-pointer" />
+          </button>
+          <div className="mx-4 text-[0.9rem]">
+            <input
+              type="text"
+              className="main-bg outline-none border-0 rounded w-[2rem] h-[2rem] pl-[16%] mr-[0.5rem] placeholder:text-black"
+              placeholder={JSON.stringify(
+                table.getState().pagination.pageIndex + 1
+              )}
+              onChange={(e) => {
+                const page = e.target.value
+                  ? Number(e.target.value) - 1
+                  : 0;
+                table.setPageIndex(page);
+              }}
+            />
+            <span className="">of {table.getPageCount()}</span>
+          </div>
+          <button
+            className=""
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+          >
+            <FaChevronRight className="text-[0.8rem] cursor-pointer" />
+          </button>
+        </div>
       </div>
-    </div>
+       
+</div>
   );
 };
 
 //Loaders :
 
-export const StudentsLoader = async () => {
-  const res = await fetch("http://localhost:4000/users?role=student");
-  return res.json();
-};

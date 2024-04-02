@@ -9,7 +9,7 @@ import ErrorPage from './pages/errorPage';
 import AdminLayout from './pages/layouts/adminLayout';
 import AdminDashboard from './pages/admin/dashboard';
 import { ProfsPage ,ProfsLoader } from './pages/admin/profs';
-import { StudentsPage ,StudentsLoader } from './pages/admin/students';
+import { StudentsPage  } from './pages/admin/students';
 import ModulesPage from './pages/admin/modules';
 import EmploisPage from './pages/admin/emplois';
 import AbsencesPage from './pages/admin/absences';
@@ -28,7 +28,7 @@ let id = 0;
 const AdminRoutes = (
   <Route path='/' element={<AdminLayout />}>
     <Route index element={<AdminDashboard />} />
-    <Route path='etudiants' element={<StudentsPage />} loader={StudentsLoader} />
+    <Route path='etudiants' element={<StudentsPage />}/>
     <Route path='professeurs' element={<ProfsPage />} loader={ProfsLoader} />
     <Route path='modules' element={<ModulesPage />} />
     <Route path='emploie-temps' element={<EmploisPage />} />
