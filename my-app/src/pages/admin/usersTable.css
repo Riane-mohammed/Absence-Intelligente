@@ -1,0 +1,12 @@
+th {
+    text-align: left;
+    padding: 1rem;
+    cursor: pointer;
+  }
+  td {
+    padding: 1rem;
+    overflow: hidden;
+  }
+  tr {
+    border-bottom-width: 2px;
+  }
