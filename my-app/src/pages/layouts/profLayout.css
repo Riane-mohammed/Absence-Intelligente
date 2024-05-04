@@ -5,3 +5,8 @@
 .active {
     @apply bg-slate-200 text-slate-700 rounded-l-full;
 }
+
+.logout {
+    @apply block w-full p-5 pl-7 hover:bg-slate-100 rounded-l-full font-semibold text-slate-900;
+    cursor: pointer;
+}

@@ -1,19 +1,36 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
+
+const initialState = {
+    id: null,
+    role: null,
+    name: '',
+    email: '',
+    password: '',
+};
+
+const savedUserState = localStorage.getItem('userState');
+const UserState = savedUserState ? JSON.parse(savedUserState) : initialState;
 
 export const userSlice = createSlice({
     name: 'user',
-
-    initialState : {
-        id:0,
-    },
-
+    initialState: UserState,
     reducers: {
-        increment: (state) => {
-            state.id += 10
+        setUser: (state, action) => {
+            const { id, role, name, email, password } = action.payload;
+            state.id = id;
+            state.role = role;
+            state.name = name;
+            state.email = email;
+            state.password = password;
+            localStorage.setItem('userState', JSON.stringify(action.payload));
+        },
+        logoutUser: (state) => {
+            localStorage.removeItem('userState');
+            return initialState;
         },
     },
-})
+});
 
-export const { increment } = userSlice.actions
+export const { setUser, logoutUser } = userSlice.actions;
 
-export default userSlice.reducer
+export default userSlice.reducer;

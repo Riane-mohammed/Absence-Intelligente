@@ -12,7 +12,11 @@ module.exports = {
       width: {
         nav: '250px',
         content: 'calc(100vw - 270px)',
-      }
+        login: '500px',
+      },
+      height: {
+        login: '400px',
+      },
     },
   },
   plugins: [],
