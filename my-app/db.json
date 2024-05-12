@@ -3,85 +3,231 @@
         {
             "id": 1,
             "role": 1,
-            "name": "Admin User",
             "email": "admin@example.com",
-            "password": "admin123"
+            "password": "admin123",
+            "name": "Admin User"
         },
         {
             "id": 2,
             "role": 2,
-            "name": "Professor Smith",
-            "email": "smith@example.com",
-            "password": "smith123",
-            "department": "Informatics"
+            "number": "0612354685",
+            "email": "johnson@example.com",
+            "password": "johnson123",
+            "first_name": "Professor",
+            "last_name": "Johnson",
+            "department": "Informatique"
         },
         {
             "id": 3,
             "role": 2,
-            "name": "Professor Johnson",
-            "email": "johnson@example.com",
-            "password": "johnson123",
-            "department": "Industrial"
+            "number": "0612354685",
+            "email": "smith@example.com",
+            "password": "smith123",
+            "first_name": "Professor",
+            "last_name": "Smith",
+            "department": "Informatique"
         },
         {
             "id": 4,
-            "role": 3,
-            "name": "Student Adams",
-            "email": "adams@example.com",
-            "password": "adams123",
-            "class": "A"
+            "role": 2,
+            "number": "0612354685",
+            "email": "williams@example.com",
+            "password": "williams123",
+            "first_name": "Professor",
+            "last_name": "Williams",
+            "department": "Industriel"
         },
         {
             "id": 5,
-            "role": 3,
-            "name": "Student Brown",
+            "role": 2,
+            "number": "0612354685",
             "email": "brown@example.com",
             "password": "brown123",
-            "class": "B"
+            "first_name": "Professor",
+            "last_name": "Brown",
+            "department": "Informatique"
         },
         {
             "id": 6,
+            "role": 2,
+            "number": "0612354685",
+            "email": "jones@example.com",
+            "password": "jones123",
+            "first_name": "Professor",
+            "last_name": "Jones",
+            "department": "Industriel"
+        },
+        {
+            "id": 7,
+            "role": 2,
+            "number": "0612354685",
+            "email": "davis@example.com",
+            "password": "davis123",
+            "first_name": "Professor",
+            "last_name": "Davis",
+            "department": "Informatique"
+        },
+        {
+            "id": 8,
             "role": 3,
-            "name": "Student Clark",
+            "number": "0612354685",
+            "email": "adams@example.com",
+            "password": "adams123",
+            "first_name": "Student",
+            "last_name": "Adams",
+            "class": "CP1"
+        },
+        {
+            "id": 9,
+            "role": 3,
+            "number": "0612354685",
+            "email": "brown@example.com",
+            "password": "brown123",
+            "first_name": "Student",
+            "last_name": "Brown",
+            "class": "CP2"
+        },
+        {
+            "id": 10,
+            "role": 3,
+            "number": "0612354685",
             "email": "clark@example.com",
             "password": "clark123",
-            "class": "A"
+            "first_name": "Student",
+            "last_name": "Clark",
+            "class": "1INFO"
+        },
+        {
+            "id": 11,
+            "role": 3,
+            "number": "0612354685",
+            "email": "Med@example.com",
+            "password": "Med123",
+            "first_name": "Student",
+            "last_name": "Med",
+            "class": "2INDUS"
+        },
+        {
+            "id": 12,
+            "role": 3,
+            "number": "0612354685",
+            "email": "Rocky@example.com",
+            "password": "Rocky123",
+            "first_name": "Student",
+            "last_name": "Rocky",
+            "class": "2INDUS"
+        },
+        {
+            "id": 13,
+            "role": 3,
+            "number": "0612354685",
+            "email": "Steve@example.com",
+            "password": "Steve123",
+            "first_name": "Student",
+            "last_name": "Steve",
+            "class": "2INFO"
         }
     ],
     "courses": [
         {
+            "class": "CP1",
             "id": 1,
             "name": "Mathematics",
-            "professorId": 2
+            "professor": "Jack"
         },
         {
+            "class": "CP2",
             "id": 2,
             "name": "Physics",
-            "professorId": 3
+            "professor": "Jill"
+        },
+        {
+            "class": "1INFO",
+            "id": 3,
+            "name": "Computer Science",
+            "professor": "Jane"
+        },
+        {
+            "class": "2INFO",
+            "id": 4,
+            "name": "Biology",
+            "professor": "Bob"
+        },
+        {
+            "class": "3INFO",
+            "id": 5,
+            "name": "History",
+            "professor": "Hannah"
+        },
+        {
+            "class": "1INDUS",
+            "id": 6,
+            "name": "Chemistry",
+            "professor": "Charlie"
+        },
+        {
+            "class": "2INDUS",
+            "id": 7,
+            "name": "Geography",
+            "professor": "Grace"
+        },
+        {
+            "class": "3INDUS",
+            "id": 8,
+            "name": "English",
+            "professor": "Ethan"
         }
     ],
     "absences": [
         {
             "id": 1,
-            "studentId": 4,
-            "courseId": 1,
+            "studentName": "Jack",
+            "courseName": 1,
+            "profName": 1,
             "date": "2023-04-01",
-            "justified": false
+            "hour": "10",
+            "justified": true
         },
         {
             "id": 2,
-            "studentId": 5,
-            "courseId": 2,
-            "date": "2023-04-03",
+            "studentName": "Markus",
+            "courseName": 1,
+            "profName": 1,
+            "date": "2023-04-01",
+            "hour": "10",
+            "justified": false
+        },
+        {
+            "id": 3,
+            "studentName": "Rock",
+            "courseName": 1,
+            "profName": 1,
+            "date": "2023-04-01",
+            "hour": "10",
             "justified": true
+        },
+        {
+            "id": 4,
+            "studentName": "med",
+            "courseName": 1,
+            "profName": 1,
+            "date": "2023-04-01",
+            "hour": "10",
+            "justified": false
         }
     ],
-    "medicalCertificates": [
+    "classes": [
         {
             "id": 1,
-            "studentId": 5,
-            "date": "2023-04-03",
-            "fileUrl": "https://example.com/certificate.pdf"
+            "name": "CP1",
+            "filiere": "STI",
+            "department": ""
+        },
+        {
+            "id": 1,
+            "name": "1INFO",
+            "filiere": "STI",
+            "department": ""
         }
     ]
 }

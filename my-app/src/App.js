@@ -10,8 +10,9 @@ import { SignIn } from './pages/shared/signIn';
 import AdminLayout from './pages/layouts/adminLayout';
 import AdminDashboard from './pages/admin/dashboard';
 import { ProfsPage, ProfsLoader } from './pages/admin/profs';
-import { StudentsPage } from './pages/admin/students';
-import ModulesPage from './pages/admin/modules';
+import { StudentsLoader, StudentsPage } from './pages/admin/students';
+import { coursesLoader, CoursesPage } from './pages/admin/modules';
+import { Classes } from './pages/admin/classes';
 import EmploisPage from './pages/admin/emplois';
 import AbsencesPage from './pages/admin/absences';
 
@@ -20,7 +21,6 @@ import ProfLayout from './pages/layouts/profLayout';
 import ProfDashboard from './pages/prof/profDashboard';
 import ProfStudentsPage from './pages/prof/profStudents';
 import TakeAbsencesPage from './pages/prof/takeAbsences';
-import JustifAbsenses from './pages/prof/JustifAbsenses';
 import Historique from './pages/prof/historique';
 
 function App() {
@@ -29,11 +29,11 @@ function App() {
   const AdminRoutes = (
     <Route path='/' element={<AdminLayout />}>
       <Route index element={<AdminDashboard />} />
-      <Route path='etudiants' element={<StudentsPage />} />
+      <Route path='etudiants' element={<StudentsPage />} loader={StudentsLoader} />
       <Route path='professeurs' element={<ProfsPage />} loader={ProfsLoader} />
-      <Route path='modules' element={<ModulesPage />} />
+      <Route path='modules' element={<CoursesPage />} loader={coursesLoader} />
+      <Route path='classes' element={<Classes />} />
       <Route path='emploie-temps' element={<EmploisPage />} />
-      <Route path="Justif-absenses" element={<JustifAbsenses />} />
       <Route path='absenses' element={<AbsencesPage />} />
       <Route path="*" element={<ErrorPage />} />
     </Route>

@@ -1,5 +1,5 @@
 const EmploisPage = () => {
-    return ( 
+    return (
         <div>Emplois page </div>
     );
 }

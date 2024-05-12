@@ -10,12 +10,16 @@ module.exports = {
         med: '#4c0519',
       },
       width: {
+        content: 'calc(100vw - 280px)',
         nav: '250px',
-        content: 'calc(100vw - 270px)',
         login: '500px',
+        tdCourse: '175px',
       },
       height: {
         login: '400px',
+      },
+      margin: {
+        nav: '265px',
       },
     },
   },

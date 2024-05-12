@@ -2,11 +2,12 @@ import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import logo from '../../assets/images/logo.jpeg';
 import './adminLayout.css';
 import { logoutUser } from '../../store/Slices/userSlice';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const AdminLayout = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { name } = useSelector(state => state.user);
 
     const handleLogout = () => {
         dispatch(logoutUser());
@@ -15,10 +16,10 @@ const AdminLayout = () => {
 
     return (
         <div className="App bg-slate-200 flex justify-between min-h-screen">
-            <div className="side-bar bg-white my-1 rounded-lg mx-auto w-nav">
+            <div className="side-bar bg-white my-1 rounded-lg mx-auto w-nav fixed h-screen" >
                 <div className='flex items-center mb-5'>
                     <img src={logo} alt="Logo-ensa" className='w-20 m-1 p-2' />
-                    <p>Administrateur</p>
+                    <p>{name ? name : 'Adminstrateur'}</p>
                 </div>
                 <ul className='nav-items'>
                     <li className='nav-item' >
@@ -34,10 +35,10 @@ const AdminLayout = () => {
                         <NavLink to="modules" className="a-link"> Modules </NavLink>
                     </li>
                     <li className='nav-item' >
-                        <NavLink to="emploie-temps" className="a-link" > Emplois de Temps </NavLink>
+                        <NavLink to="classes" className="a-link"> Classes </NavLink>
                     </li>
                     <li className='nav-item' >
-                        <NavLink to="Justif-absenses" className="a-link"> Justification Des Absences </NavLink>
+                        <NavLink to="emploie-temps" className="a-link" > Emplois de Temps </NavLink>
                     </li>
                     <li className='nav-item' >
                         <NavLink to="absenses" className="a-link" > Absenses </NavLink>
@@ -47,7 +48,7 @@ const AdminLayout = () => {
                     </li>
                 </ul>
             </div>
-            <div className="content bg-white mx-auto my-1 rounded-lg w-content">
+            <div className="content bg-white mx-auto my-1 rounded-lg w-content ml-nav overflow-x-auto">
                 <Outlet />
             </div>
         </div>
