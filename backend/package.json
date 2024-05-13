@@ -1,0 +1,32 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Ce dossier contient le code source et la documentation spécifiques au backend de l'application de gestion des absences des étudiants.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Isam-tfares/AbsenceManagement.git"
+  },
+  "author": "ABDELHAMID CHEBEL , MOHAMED ELAIDI",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Isam-tfares/AbsenceManagement/issues"
+  },
+  "homepage": "https://github.com/Isam-tfares/AbsenceManagement#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-async-handler": "^1.2.0",
+    "joi": "^17.13.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.3.4"
+  }
+}
