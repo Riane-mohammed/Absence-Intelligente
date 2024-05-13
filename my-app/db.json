@@ -182,38 +182,112 @@
         {
             "id": 1,
             "studentName": "Jack",
-            "courseName": 1,
+            "courseName": "Security",
             "profName": 1,
             "date": "2023-04-01",
             "hour": "10",
-            "justified": true
+            "justified": true,
+            "nombre_abs":3
         },
         {
             "id": 2,
             "studentName": "Markus",
-            "courseName": 1,
+            "courseName": "java",
             "profName": 1,
             "date": "2023-04-01",
             "hour": "10",
-            "justified": false
+            "justified": false,
+            "nombre_abs":4
         },
         {
             "id": 3,
             "studentName": "Rock",
-            "courseName": 1,
+            "courseName": "Java",
             "profName": 1,
             "date": "2023-04-01",
             "hour": "10",
-            "justified": true
+            "justified": true,
+            "nombre_abs":6
         },
         {
             "id": 4,
             "studentName": "med",
-            "courseName": 1,
+            "courseName": "Mobile",
             "profName": 1,
             "date": "2023-04-01",
             "hour": "10",
-            "justified": false
+            "justified": false,
+            "nombre_abs":2
+        },
+        {
+            "id": 5,
+            "studentName": "saida",
+            "courseName": "Mobile",
+            "profName": 1,
+            "date": "2023-04-01",
+            "hour": "11",
+            "justified": false,
+            "nombre_abs":2
+        },
+        {
+            "id": 6,
+            "studentName": "oumaima",
+            "courseName": "Mobile",
+            "profName": 1,
+            "date": "2023-04-01",
+            "hour": "11",
+            "justified": false,
+            "nombre_abs":3
+        },
+        {
+            "id": 7,
+            "studentName": "rida",
+            "courseName": "Java",
+            "profName": 1,
+            "date": "2023-04-01",
+            "hour": "08",
+            "justified": false,
+            "nombre_abs":2
+        },
+        {
+            "id": 8,
+            "studentName": "mustapha",
+            "courseName": "Security",
+            "profName": 1,
+            "date": "2023-04-01",
+            "hour": "09",
+            "justified": false,
+            "nombre_abs":3
+        },
+        {
+            "id": 9,
+            "studentName": "rabiaa",
+            "courseName": "Security",
+            "profName": 1,
+            "date": "2023-04-01",
+            "hour": "08",
+            "justified": false,
+            "nombre_abs":4
+        },
+        {
+            "id": 10,
+            "studentName": "nadia",
+            "courseName": "Security",
+            "profName": 1,
+            "date": "2023-04-01",
+            "hour": "14:30",
+            "justified": false,
+            "nombre_abs":2
+        },
+        {
+            "id": 11,
+            "studentName": "simo",
+            "courseName": "Mobile",
+            "profName": 1,
+            "date": "2023-04-01",
+            "hour": "10",
+            "justified": false,
+            "nombre_abs":4
         }
     ],
     "classes": [
