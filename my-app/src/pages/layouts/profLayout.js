@@ -28,9 +28,6 @@ const ProfLayout = () => {
                         <NavLink to="etudiants" className="a-link"> Etudiants </NavLink>
                     </li>
                     <li className='nav-item' >
-                        <NavLink to="Prendre-absenses" className="a-link" > Prendre Les Absences </NavLink>
-                    </li>
-                    <li className='nav-item' >
                         <NavLink to="Historique-Absneses" className="a-link" > Historique Des Absenses </NavLink>
                     </li>
                     <li className='nav-item' onClick={handleLogout} >

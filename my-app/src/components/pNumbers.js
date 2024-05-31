@@ -1,47 +1,52 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './pNumbers.css';
 
-export const Pnumbers = ({ nbrPages }) => {
-    const [currentPage, setCurrentPage] = useState(1);
-    let listePages = [];
+export const Pnumbers = ({ nbrPages, onPageChange, currentPage }) => {
+    const [current, setCurrent] = useState(currentPage);
 
-    for (let i = 1; i <= nbrPages; i++) {
-        listePages.push(i);
-    };
+    useEffect(() => {
+        setCurrent(currentPage);
+    }, [currentPage]);
 
     const goLastPage = () => {
-        setCurrentPage(nbrPages)
+        onPageChange(nbrPages);
     };
 
     const goFirstPage = () => {
-        setCurrentPage(1);
+        onPageChange(1);
     };
 
     const setPage = (nbr) => {
-        setCurrentPage(nbr);
+        onPageChange(nbr);
     };
 
     const goBack = () => {
-        setCurrentPage(currentPage === 1 ? currentPage : currentPage - 1);
+        onPageChange(current === 1 ? current : current - 1);
     };
 
     const goForward = () => {
-        setCurrentPage(currentPage === nbrPages ? currentPage : currentPage + 1);
+        onPageChange(current === nbrPages ? current : current + 1);
     };
 
     return (
         <div className='flex justify-center items-center'>
             <div className="flex px-4 py-2 drop-shadow-lg">
-                <i class="fa-solid fa-backward pagination-button" onClick={goFirstPage}></i>
-                <i class="fa-solid fa-caret-left pagination-button" onClick={goBack}></i>
+                <i className="fa-solid fa-backward pagination-button" onClick={goFirstPage}></i>
+                <i className="fa-solid fa-caret-left pagination-button" onClick={goBack}></i>
                 <p className='w-2'></p>
-                {listePages.map((nbr) => (
-                    <p key={nbr} className={`mx-1 px-2 cursor-pointer font-bold ${nbr === currentPage ? 'activenbr' : ''}`} onClick={() => setPage(nbr)} >{nbr}</p>
+                {[...Array(nbrPages)].map((_, index) => (
+                    <p
+                        key={index + 1}
+                        className={`mx-1 px-2 cursor-pointer font-bold ${index + 1 === current ? 'activenbr' : ''}`}
+                        onClick={() => setPage(index + 1)}
+                    >
+                        {index + 1}
+                    </p>
                 ))}
                 <p className='w-2'></p>
-                <i class="fa-solid fa-caret-right pagination-button" onClick={goForward}></i>
-                <i class="fa-solid fa-forward pagination-button" onClick={goLastPage}></i>
+                <i className="fa-solid fa-caret-right pagination-button" onClick={goForward}></i>
+                <i className="fa-solid fa-forward pagination-button" onClick={goLastPage}></i>
             </div>
         </div>
-    )
-}
+    );
+};

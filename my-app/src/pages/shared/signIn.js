@@ -9,6 +9,7 @@ export const SignIn = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isHidden, setIsHidden] = useState(true);
+    const [errorMessage, setErrorMessage] = useState('');
     const dispatch = useDispatch();
 
     const handleShow = () => {
@@ -32,7 +33,7 @@ export const SignIn = () => {
                 dispatch(setUser(data[0]));
                 return <Navigate to='/' />;
             } else {
-                console.log('error credentials');
+                setErrorMessage('* Invalid credentials. Please try again.');
             }
         } catch (error) {
             console.error('Error:', error);
@@ -48,6 +49,7 @@ export const SignIn = () => {
                         <h1 className='text-center font-bold text-3xl font-mono'>SIGN IN</h1>
                     </div>
                     <form onSubmit={handleLogin}>
+                        {errorMessage && <p className="text-red-500 my-2 font-bold font-mono">{errorMessage}</p>}
                         <input type='email' name='email' value={email} onChange={(e) => setEmail(e.target.value)} className='input-style' placeholder='Email' />
                         <div className='relative flex'>
                             <input type={isHidden ? 'password' : 'text'} name='password' value={password} onChange={(e) => setPassword(e.target.value)} className='input-style' placeholder='Mot de passe' />

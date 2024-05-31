@@ -1,24 +1,56 @@
-import { useLoaderData } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Pnumbers } from '../../components/pNumbers';
-import { useState } from 'react';
 
 export const ProfsPage = () => {
-    const profData = useLoaderData();
-    const [profs, setProfs] = useState(profData);
+    const [allProfs, setAllProfs] = useState([]);
+    const [profs, setProfs] = useState([]);
     const [department, setDepartment] = useState("");
     const [search, setSearch] = useState("");
+    const [totalCount, setTotalCount] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage] = useState(6);
+    const navigate = useNavigate();
+
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+        navigate(`/professeurs?page=${page}`);
+    };
+    
+    useEffect(() => {
+        const fetchProfs = async () => {
+            const res = await fetch(`http://localhost:4000/users?role=2`);
+            const data = await res.json();
+            setTotalCount(data.length);
+            setAllProfs(data);
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const paginatedData = data.slice(start, end);
+            setProfs(paginatedData);
+        };
+
+        fetchProfs();
+    }, [currentPage, itemsPerPage]);
 
     const filterProfessorsByDepartment = (department) => {
-        const filtered = profData.filter(prof => prof.department === department);
-        setProfs(department ? filtered : profData);
+        const filtered = allProfs.filter(prof => prof.department === department);
+        setTotalCount(filtered.length);
+        const start = (currentPage - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const paginatedData = filtered.slice(start, end);
+        setProfs(department ? paginatedData : allProfs.slice(start, end));
     };
 
-    const searchbyFullName = (search) => {
-        const filtered = profData.filter(prof =>
+    const searchByFullName = (search) => {
+        const filtered = allProfs.filter(prof =>
             prof.first_name.toLowerCase().includes(search.toLowerCase()) ||
             prof.last_name.toLowerCase().includes(search.toLowerCase())
         );
-        setProfs(search ? filtered : profData);
+        setTotalCount(filtered.length);
+        const start = (currentPage - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const paginatedData = filtered.slice(start, end);
+        setProfs(search ? paginatedData : allProfs.slice(start, end));
     };
 
     return (
@@ -33,7 +65,7 @@ export const ProfsPage = () => {
                         value={search}
                         onChange={(e) => {
                             setSearch(e.target.value);
-                            searchbyFullName(e.target.value);
+                            searchByFullName(e.target.value);
                         }}
                         className='border border-cyan-950 rounded-xl p-4 block mb-4 h-10 w-full' />
                     <div>
@@ -56,46 +88,34 @@ export const ProfsPage = () => {
                     </select>
                 </div>
             </div>
-            <table className='mx-auto my-2'>
-                <thead>
-                    <tr className='bg-gray-200'>
-                        <td className='font-bold p-4'>Nom</td>
-                        <td className='font-bold'>Prenom</td>
-                        <td className='font-bold'>Phone Number</td>
-                        <td className='font-bold text-center'>Email</td>
-                        <td className='font-bold'>Password</td>
-                        <td className='font-bold text-center'>Departement</td>
-                        <td className='font-bold text-center'>Action</td>
-                    </tr>
-                </thead>
-
-                <tbody>
+            <div className='tab rounded-tab mx-8 my-4 p-2 pl-6 shadow-tab'>
+                <div className="head grid grid-cols-7 p-2 mb-5">
+                    <p className='font-bold'>Nom</p>
+                    <p className='font-bold'>Prenom</p>
+                    <p className='font-bold'>Phone Number</p>
+                    <p className='font-bold text-center'>Email</p>
+                    <p className='font-bold text-center'>Password</p>
+                    <p className='font-bold text-center'>Departement</p>
+                    <p className='font-bold text-center'>Action</p>
+                </div>
+                <div className="cont">
                     {profs.map((prof) =>
-                        <tr key={prof.id} className='border-b-2'>
-                            <td className='pl-1 pr-4'>{prof.first_name}</td>
-                            <td className='pl-1 pr-4' >{prof.last_name}</td>
-                            <td className='pl-1 pr-4' >{prof.number}</td>
-                            <td className='pl-1 pr-4' >{prof.email}</td>
-                            <td className='pl-1 pr-4' >{prof.password}</td>
-                            <td className='pl-1 pr-4' >{prof.department}</td>
-                            <td className='p-4 flex justify-center'>
+                        <div key={prof.id} className='grid grid-cols-7 py-3 cursor-auto hover:bg-slate-100 rounded-lg'>
+                            <p className='pl-1'>{prof.first_name}</p>
+                            <p className='pl-1' >{prof.last_name}</p>
+                            <p className='pl-1 ms-2' >{prof.number}</p>
+                            <p className='pl-1' >{prof.email}</p>
+                            <p className='pl-1 text-center' >{prof.password}</p>
+                            <p className='pl-1 text-center' >{prof.department}</p>
+                            <div className='flex justify-center'>
                                 <button type='submit' className='border rounded-full px-4 py-2 bg-cyan-600 text-white font-bold hover:bg-cyan-400 me-3' ><i className="fa-solid fa-pen-to-square"></i></button>
                                 <button type='submit' className='border rounded-full px-4 py-2 bg-red-600 text-white font-bold hover:bg-red-400'><i className="fa-solid fa-trash"></i></button>
-                            </td>
-                        </tr>
+                            </div>
+                        </div>
                     )}
-                </tbody>
-            </table>
-
-            <Pnumbers nbrPages={5} />
+                </div>
+            </div>
+            <Pnumbers nbrPages={Math.ceil(totalCount / itemsPerPage)} onPageChange={handlePageChange} currentPage={currentPage} />
         </div>
     )
 }
-
-
-//Loaders :
-
-export const ProfsLoader = async () => {
-    const res = await fetch("http://localhost:4000/users?role=2");
-    return res.json();
-} 

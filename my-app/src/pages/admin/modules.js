@@ -1,23 +1,56 @@
-import { useLoaderData } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Pnumbers } from '../../components/pNumbers';
-import { useState } from 'react';
 
 export const CoursesPage = () => {
-    const cousrsesData = useLoaderData()
-    const [cousrses, setCousrses] = useState(cousrsesData);
+    const [allCourses, setAllCourses] = useState([]);
+    const [courses, setCourses] = useState([]);
     const [class_, setClass] = useState("");
     const [search, setSearch] = useState("");
+    const [totalCount, setTotalCount] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [itemsPerPage] = useState(6);
 
-    const filtercousrsesByClass = (class_) => {
-        const filtered = cousrsesData.filter(cousrse => cousrse.class === class_);
-        setCousrses(class_ ? filtered : cousrsesData);
+    const navigate = useNavigate();
+
+    const handlePageChange = (page) => {
+        setCurrentPage(page);
+        navigate(`/modules?page=${page}`);
     };
 
-    const searchbyFullName = (search) => {
-        const filtered = cousrsesData.filter(cousrse =>
-            cousrse.name.toLowerCase().includes(search.toLowerCase())
+    useEffect(() => {
+        const fetchCourses = async () => {
+            const res = await fetch(`http://localhost:4000/courses`);
+            const data = await res.json();
+            setTotalCount(data.length);
+            setAllCourses(data);
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const paginatedData = data.slice(start, end);
+            setCourses(paginatedData);
+        };
+
+        fetchCourses();
+    }, [currentPage, itemsPerPage]);
+
+    const filterCoursesByClass = (class_) => {
+        const filtered = allCourses.filter(course => course.class === class_);
+        setTotalCount(filtered.length);
+        const start = (currentPage - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const paginatedData = filtered.slice(start, end);
+        setCourses(class_ ? paginatedData : allCourses.slice(start, end));
+    };
+
+    const searchByName = (search) => {
+        const filtered = allCourses.filter(course =>
+            course.name.toLowerCase().includes(search.toLowerCase())
         );
-        setCousrses(search ? filtered : cousrsesData);
+        setTotalCount(filtered.length);
+        const start = (currentPage - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const paginatedData = filtered.slice(start, end);
+        setCourses(search ? paginatedData : allCourses.slice(start, end));
     };
 
     return (
@@ -32,7 +65,7 @@ export const CoursesPage = () => {
                         value={search}
                         onChange={(e) => {
                             setSearch(e.target.value);
-                            searchbyFullName(e.target.value);
+                            searchByName(e.target.value);
                         }}
                         className='border border-cyan-950 rounded-xl p-4 block mb-4 h-10 w-full' />
                     <div>
@@ -46,7 +79,7 @@ export const CoursesPage = () => {
                         value={class_}
                         onChange={(e) => {
                             setClass(e.target.value);
-                            filtercousrsesByClass(e.target.value);
+                            filterCoursesByClass(e.target.value);
                         }}
                         className='border border-cyan-950 rounded-xl px-2 block mb-4 h-10 w-full'>
                         <option value="">choisir une classe</option>
@@ -61,39 +94,28 @@ export const CoursesPage = () => {
                     </select>
                 </div>
             </div>
-            <table className='mx-auto my-2'>
-                <thead>
-                    <tr className='bg-gray-200'>
-                        <td className='font-bold p-4'>Nom</td>
-                        <td className='font-bold text-center'>Professeur</td>
-                        <td className='font-bold text-center'>Classe</td>
-                        <td className='font-bold text-center'>Action</td>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    {cousrses.map((cousrse) =>
-                        <tr key={cousrse.id} className='border-b-2'>
-                            <td className='pl-4 w-tdCourse'>{cousrse.name}</td>
-                            <td className='pl-4 w-tdCourse text-center'>{cousrse.professor}</td>
-                            <td className='pl-4 w-tdCourse text-center' >{cousrse.class}</td>
-                            <td className='p-4 flex justify-center'>
+            <div className='tab rounded-tab mx-8 my-4 p-2 pl-6 shadow-tab'>
+                <div className="head grid grid-cols-4 p-2 mb-5">
+                    <p className='font-bold'>Nom</p>
+                    <p className='font-bold text-center'>Professeur</p>
+                    <p className='font-bold text-center'>Classe</p>
+                    <p className='font-bold text-center'>Action</p>
+                </div>
+                <div className="cont">
+                    {courses.map((course) =>
+                        <div key={course.id} className='grid grid-cols-4 py-3 cursor-auto hover:bg-slate-100 rounded-lg'>
+                            <p className='pl-1'>{course.name}</p>
+                            <p className='pl-1 text-center' >{course.professor}</p>
+                            <p className='pl-1 text-center' >{course.class}</p>
+                            <div className='flex justify-center'>
                                 <button type='submit' className='border rounded-full px-4 py-2 bg-cyan-600 text-white font-bold hover:bg-cyan-400 me-3' ><i className="fa-solid fa-pen-to-square"></i></button>
                                 <button type='submit' className='border rounded-full px-4 py-2 bg-red-600 text-white font-bold hover:bg-red-400'><i className="fa-solid fa-trash"></i></button>
-                            </td>
-                        </tr>
+                            </div>
+                        </div>
                     )}
-                </tbody>
-            </table>
-            <Pnumbers nbrPages={5} />
+                </div>
+            </div>
+            <Pnumbers nbrPages={Math.ceil(totalCount / itemsPerPage)} onPageChange={handlePageChange} currentPage={currentPage} />
         </div>
     )
-}
-
-
-//Loaders :
-
-export const coursesLoader = async () => {
-    const res = await fetch("http://localhost:4000/courses");
-    return res.json();
 }

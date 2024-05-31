@@ -1,7 +1,10 @@
 const ErrorPage = () => {
     return (
-        <div className="text-3xl border-8 font-semibold text-med text-center p-10 mt-10 mx-5 rounded-full border-t-8">errorPage</div>
-    )
+        <div style={{ textAlign: 'center', marginTop: '20px' }}>
+            <h1 style={{ fontSize: '2rem', marginBottom: '10px' }}>Oops! Something went wrong.</h1>
+            <p style={{ fontSize: '1.2rem' }}>Please try again later or contact support.</p>
+        </div>
+    );
 }
 
-export default ErrorPage
+export default ErrorPage;

@@ -38,9 +38,6 @@ const AdminLayout = () => {
                         <NavLink to="classes" className="a-link"> Classes </NavLink>
                     </li>
                     <li className='nav-item' >
-                        <NavLink to="emploie-temps" className="a-link" > Emplois de Temps </NavLink>
-                    </li>
-                    <li className='nav-item' >
                         <NavLink to="absenses" className="a-link" > Absenses </NavLink>
                     </li>
                     <li className='nav-item' onClick={handleLogout} >
