@@ -1,0 +1,625 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "role": 1,
+            "email": "admin@example.com",
+            "password": "admin123",
+            "name": "Admin User"
+        },
+        {
+            "id": 2,
+            "role": 2,
+            "number": "0612354685",
+            "email": "prof1@example.com",
+            "password": "prof1123",
+            "first_name": "Professor",
+            "last_name": "Professor 1",
+            "department": "Informatique"
+        },
+        {
+            "id": 3,
+            "role": 2,
+            "number": "0612354685",
+            "email": "prof2@example.com",
+            "password": "prof2123",
+            "first_name": "Professor",
+            "last_name": "Professor 2",
+            "department": "Industriel"
+        },
+        {
+            "id": 4,
+            "role": 2,
+            "number": "0612354685",
+            "email": "prof3@example.com",
+            "password": "prof3123",
+            "first_name": "Professor",
+            "last_name": "Professor 3",
+            "department": "Informatique"
+        },
+        {
+            "id": 5,
+            "role": 2,
+            "number": "0612354685",
+            "email": "prof4@example.com",
+            "password": "prof4123",
+            "first_name": "Professor",
+            "last_name": "Professor 4",
+            "department": "Industriel"
+        },
+        {
+            "id": 6,
+            "role": 2,
+            "number": "0612354685",
+            "email": "prof5@example.com",
+            "password": "prof5123",
+            "first_name": "Professor",
+            "last_name": "Professor 5",
+            "department": "Informatique"
+        },
+        {
+            "id": 7,
+            "role": 2,
+            "number": "0612354685",
+            "email": "prof6@example.com",
+            "password": "prof6123",
+            "first_name": "Professor",
+            "last_name": "Professor 6",
+            "department": "Industriel"
+        },
+        {
+            "id": 8,
+            "role": 2,
+            "number": "0612354685",
+            "email": "prof7@example.com",
+            "password": "prof7123",
+            "first_name": "Professor",
+            "last_name": "Professor 7",
+            "department": "Informatique"
+        },
+        {
+            "id": 9,
+            "role": 2,
+            "number": "0612354685",
+            "email": "prof8@example.com",
+            "password": "prof8123",
+            "first_name": "Professor",
+            "last_name": "Professor 8",
+            "department": "Industriel"
+        },
+        {
+            "id": 10,
+            "role": 2,
+            "number": "0612354685",
+            "email": "prof9@example.com",
+            "password": "prof9123",
+            "first_name": "Professor",
+            "last_name": "Professor 9",
+            "department": "Informatique"
+        },
+        {
+            "id": 11,
+            "role": 2,
+            "number": "0612354685",
+            "email": "prof10@example.com",
+            "password": "prof10123",
+            "first_name": "Professor",
+            "last_name": "Professor 10",
+            "department": "Industriel"
+        },
+        {
+            "id": 12,
+            "role": 2,
+            "number": "0612354685",
+            "email": "prof11@example.com",
+            "password": "prof11123",
+            "first_name": "Professor",
+            "last_name": "Professor 11",
+            "department": "Informatique"
+        },
+        {
+            "id": 13,
+            "role": 2,
+            "number": "0612354685",
+            "email": "prof12@example.com",
+            "password": "prof12123",
+            "first_name": "Professor",
+            "last_name": "Professor 12",
+            "department": "Industriel"
+        },
+        {
+            "id": 14,
+            "role": 2,
+            "number": "0612354685",
+            "email": "prof13@example.com",
+            "password": "prof13123",
+            "first_name": "Professor",
+            "last_name": "Professor 13",
+            "department": "Informatique"
+        },
+        {
+            "id": 15,
+            "role": 2,
+            "number": "0612354685",
+            "email": "prof14@example.com",
+            "password": "prof14123",
+            "first_name": "Professor",
+            "last_name": "Professor 14",
+            "department": "Industriel"
+        },
+        {
+            "id": 16,
+            "role": 2,
+            "number": "0612354685",
+            "email": "prof15@example.com",
+            "password": "prof15123",
+            "first_name": "Professor",
+            "last_name": "Professor 15",
+            "department": "Informatique"
+        },
+        {
+            "id": 17,
+            "role": 2,
+            "number": "0612354685",
+            "email": "prof16@example.com",
+            "password": "prof16123",
+            "first_name": "Professor",
+            "last_name": "Professor 16",
+            "department": "Industriel"
+        },
+        {
+            "id": 18,
+            "role": 2,
+            "number": "0612354685",
+            "email": "prof17@example.com",
+            "password": "prof17123",
+            "first_name": "Professor",
+            "last_name": "Professor 17",
+            "department": "Informatique"
+        },
+        {
+            "id": 19,
+            "role": 2,
+            "number": "0612354685",
+            "email": "prof18@example.com",
+            "password": "prof18123",
+            "first_name": "Professor",
+            "last_name": "Professor 18",
+            "department": "Industriel"
+        },
+        {
+            "id": 20,
+            "role": 2,
+            "number": "0612354685",
+            "email": "prof19@example.com",
+            "password": "prof19123",
+            "first_name": "Professor",
+            "last_name": "Professor 19",
+            "department": "Informatique"
+        },
+        {
+            "id": 21,
+            "role": 2,
+            "number": "0612354685",
+            "email": "prof20@example.com",
+            "password": "prof20123",
+            "first_name": "Professor",
+            "last_name": "Professor 20",
+            "department": "Industriel"
+        },
+        {
+            "id": 1,
+            "role": 3,
+            "number": "0612354681",
+            "email": "student1@example.com",
+            "password": "password1",
+            "first_name": "Student",
+            "last_name": "One",
+            "class": "ClassA"
+        },
+        {
+            "id": 2,
+            "role": 3,
+            "number": "0612354682",
+            "email": "student2@example.com",
+            "password": "password2",
+            "first_name": "Student",
+            "last_name": "Two",
+            "class": "ClassB"
+        },
+        {
+            "id": 3,
+            "role": 3,
+            "number": "0612354683",
+            "email": "student3@example.com",
+            "password": "password3",
+            "first_name": "Student",
+            "last_name": "Three",
+            "class": "ClassC"
+        },
+        {
+            "id": 4,
+            "role": 3,
+            "number": "0612354684",
+            "email": "student4@example.com",
+            "password": "password4",
+            "first_name": "Student",
+            "last_name": "Four",
+            "class": "ClassD"
+        },
+        {
+            "id": 5,
+            "role": 3,
+            "number": "0612354685",
+            "email": "student5@example.com",
+            "password": "password5",
+            "first_name": "Student",
+            "last_name": "Five",
+            "class": "ClassE"
+        },
+        {
+            "id": 6,
+            "role": 3,
+            "number": "0612354686",
+            "email": "student6@example.com",
+            "password": "password6",
+            "first_name": "Student",
+            "last_name": "Six",
+            "class": "ClassF"
+        },
+        {
+            "id": 7,
+            "role": 3,
+            "number": "0612354687",
+            "email": "student7@example.com",
+            "password": "password7",
+            "first_name": "Student",
+            "last_name": "Seven",
+            "class": "ClassG"
+        },
+        {
+            "id": 8,
+            "role": 3,
+            "number": "0612354688",
+            "email": "student8@example.com",
+            "password": "password8",
+            "first_name": "Student",
+            "last_name": "Eight",
+            "class": "ClassH"
+        },
+        {
+            "id": 9,
+            "role": 3,
+            "number": "0612354689",
+            "email": "student9@example.com",
+            "password": "password9",
+            "first_name": "Student",
+            "last_name": "Nine",
+            "class": "ClassI"
+        },
+        {
+            "id": 10,
+            "role": 3,
+            "number": "0612354690",
+            "email": "student10@example.com",
+            "password": "password10",
+            "first_name": "Student",
+            "last_name": "Ten",
+            "class": "ClassJ"
+        },
+        {
+            "id": 11,
+            "role": 3,
+            "number": "0612354691",
+            "email": "student11@example.com",
+            "password": "password11",
+            "first_name": "Student",
+            "last_name": "Eleven",
+            "class": "ClassK"
+        },
+        {
+            "id": 12,
+            "role": 3,
+            "number": "0612354692",
+            "email": "student12@example.com",
+            "password": "password12",
+            "first_name": "Student",
+            "last_name": "Twelve",
+            "class": "ClassL"
+        },
+        {
+            "id": 13,
+            "role": 3,
+            "number": "0612354693",
+            "email": "student13@example.com",
+            "password": "password13",
+            "first_name": "Student",
+            "last_name": "Thirteen",
+            "class": "ClassM"
+        },
+        {
+            "id": 14,
+            "role": 3,
+            "number": "0612354694",
+            "email": "student14@example.com",
+            "password": "password14",
+            "first_name": "Student",
+            "last_name": "Fourteen",
+            "class": "ClassN"
+        },
+        {
+            "id": 15,
+            "role": 3,
+            "number": "0612354695",
+            "email": "student15@example.com",
+            "password": "password15",
+            "first_name": "Student",
+            "last_name": "Fifteen",
+            "class": "ClassO"
+        },
+        {
+            "id": 16,
+            "role": 3,
+            "number": "0612354696",
+            "email": "student16@example.com",
+            "password": "password16",
+            "first_name": "Student",
+            "last_name": "Sixteen",
+            "class": "ClassP"
+        },
+        {
+            "id": 17,
+            "role": 3,
+            "number": "0612354697",
+            "email": "student17@example.com",
+            "password": "password17",
+            "first_name": "Student",
+            "last_name": "Seventeen",
+            "class": "ClassQ"
+        },
+        {
+            "id": 18,
+            "role": 3,
+            "number": "0612354698",
+            "email": "student18@example.com",
+            "password": "password18",
+            "first_name": "Student",
+            "last_name": "Eighteen",
+            "class": "ClassR"
+        },
+        {
+            "id": 19,
+            "role": 3,
+            "number": "0612354699",
+            "email": "student19@example.com",
+            "password": "password19",
+            "first_name": "Student",
+            "last_name": "Nineteen",
+            "class": "ClassS"
+        },
+        {
+            "id": 20,
+            "role": 3,
+            "number": "0612354700",
+            "email": "student20@example.com",
+            "password": "password20",
+            "first_name": "Student",
+            "last_name": "Twenty",
+            "class": "ClassT"
+        },
+        {
+            "id": 21,
+            "role": 3,
+            "number": "0612354701",
+            "email": "student21@example.com",
+            "password": "password21",
+            "first_name": "Student",
+            "last_name": "Twenty-One",
+            "class": "ClassU"
+        },
+        {
+            "id": 22,
+            "role": 3,
+            "number": "0612354702",
+            "email": "student22@example.com",
+            "password": "password22",
+            "first_name": "Student",
+            "last_name": "Twenty-Two",
+            "class": "ClassV"
+        },
+        {
+            "id": 23,
+            "role": 3,
+            "number": "0612354703",
+            "email": "student23@example.com",
+            "password": "password23",
+            "first_name": "Student",
+            "last_name": "Twenty-Three",
+            "class": "ClassW"
+        },
+        {
+            "id": 24,
+            "role": 3,
+            "number": "0612354704",
+            "email": "student24@example.com",
+            "password": "password24",
+            "first_name": "Student",
+            "last_name": "Twenty-Four",
+            "class": "ClassX"
+        },
+        {
+            "id": 25,
+            "role": 3,
+            "number": "0612354705",
+            "email": "student25@example.com",
+            "password": "password25",
+            "first_name": "Student",
+            "last_name": "Twenty-Five",
+            "class": "ClassY"
+        },
+        {
+            "id": 26,
+            "role": 3,
+            "number": "0612354706",
+            "email": "student26@example.com",
+            "password": "password26",
+            "first_name": "Student",
+            "last_name": "Twenty-Six",
+            "class": "ClassZ"
+        },
+        {
+            "id": 27,
+            "role": 3,
+            "number": "0612354707",
+            "email": "student27@example.com",
+            "password": "password27",
+            "first_name": "Student",
+            "last_name": "Twenty-Seven",
+            "class": "ClassA1"
+        },
+        {
+            "id": 28,
+            "role": 3,
+            "number": "0612354708",
+            "email": "student28@example.com",
+            "password": "password28",
+            "first_name": "Student",
+            "last_name": "Twenty-Eight",
+            "class": "ClassB1"
+        },
+        {
+            "id": 29,
+            "role": 3,
+            "number": "0612354709",
+            "email": "student29@example.com",
+            "password": "password29",
+            "first_name": "Student",
+            "last_name": "Twenty-Nine",
+            "class": "ClassC1"
+        },
+        {
+            "id": 30,
+            "role": 3,
+            "number": "0612354710",
+            "email": "student30@example.com",
+            "password": "password30",
+            "first_name": "Student",
+            "last_name": "Thirty",
+            "class": "ClassD1"
+        }
+    ],
+    "courses": [
+        {
+            "class": "CP1",
+            "id": 1,
+            "name": "Mathematics",
+            "professor": "Jack"
+        },
+        {
+            "class": "CP2",
+            "id": 2,
+            "name": "Physics",
+            "professor": "Jill"
+        },
+        {
+            "class": "1INFO",
+            "id": 3,
+            "name": "Computer Science",
+            "professor": "Jane"
+        },
+        {
+            "class": "2INFO",
+            "id": 4,
+            "name": "Biology",
+            "professor": "Bob"
+        },
+        {
+            "class": "3INFO",
+            "id": 5,
+            "name": "History",
+            "professor": "Hannah"
+        },
+        {
+            "class": "1INDUS",
+            "id": 6,
+            "name": "Chemistry",
+            "professor": "Charlie"
+        }
+    ],
+    "absences": [
+        {
+            "id": 1,
+            "studentName": "Jack",
+            "class": "1INDUS",
+            "justified": true,
+            "nombre_abs": 3
+        },
+        {
+            "id": 2,
+            "studentName": "Markus",
+            "class": "3INFO",
+            "justified": false,
+            "nombre_abs": 4
+        },
+        {
+            "id": 3,
+            "studentName": "Rock",
+            "class": "2INFO",
+            "justified": true,
+            "nombre_abs": 6
+        },
+        {
+            "id": 4,
+            "studentName": "Ryan",
+            "class": "CP1",
+            "justified": false,
+            "nombre_abs": 2
+        },
+        {
+            "id": 5,
+            "studentName": "Reda",
+            "class": "CP2",
+            "justified": false,
+            "nombre_abs": 2
+        },
+        {
+            "id": 6,
+            "studentName": "oumaima",
+            "class": "1INFO",
+            "justified": false,
+            "nombre_abs": 3
+        }
+    ],
+    "classes": [
+        {
+            "id": 1,
+            "name": "CP1",
+            "filiere": "STI"
+        },
+        {
+            "id": 2,
+            "name": "CP2",
+            "filiere": "STI"
+        },
+        {
+            "id": 3,
+            "name": "1INFO",
+            "filiere": "INFORMATIQUE"
+        },
+        {
+            "id": 4,
+            "name": "2INFO",
+            "filiere": "INFORMATIQUE"
+        },
+        {
+            "id": 5,
+            "name": "1INDUS",
+            "filiere": "INDUSTRIEL"
+        },
+        {
+            "id": 6,
+            "name": "2INDUS",
+            "filiere": "INDUSTRIEL"
+        }
+    ]
+}
